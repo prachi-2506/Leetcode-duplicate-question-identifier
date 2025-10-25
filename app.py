@@ -7,16 +7,17 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Load model and vectorizer
 @st.cache_resource
 def load_model():
-    model = torch.load('leetcodemodel.pt', map_location=torch.device('cpu'))
+    model = torch.load('leetcode_model.pt', map_location=torch.device('cpu'))  # Add underscore
     model.eval()
-    vectorizer = joblib.load('tfidfvectorizer.pkl')
+    vectorizer = joblib.load('tfidf_vectorizer.pkl')  # Add underscore
     return model, vectorizer
 
 model, vectorizer = load_model()
 
+
 # Load problem titles
 import pandas as pd
-df = pd.read_csv('leetcodecleaned.csv')
+df = pd.read_csv('leetcode_cleaned.csv')  # Add underscore
 titles = df['cleantitle'].tolist()
 
 # Function to get similar problems
